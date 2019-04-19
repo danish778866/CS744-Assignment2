@@ -8,6 +8,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 tf.app.flags.DEFINE_integer("task_index", 0, "Index of task with in the job.")
 tf.app.flags.DEFINE_string("job_name", "worker", "either worker or ps")
 tf.app.flags.DEFINE_string("deploy_mode", "single", "either single or cluster")
+tf.app.flags.DEFINE_integer("batch_size", 0, "Integer batch size")
 FLAGS = tf.app.flags.FLAGS
 
 tf.logging.set_verbosity(tf.logging.DEBUG)
@@ -67,9 +68,8 @@ elif FLAGS.job_name == "worker":
         accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
         learning_rate = 0.01
-        training_epochs = 25
-        batch_size = 256
-        display_step = 1
+        batch_size = FLAGS.batch_size
+        display_step = 10
         # Gradient Descent
         optimizer = tf.train.GradientDescentOptimizer(learning_rate)
         opt = optimizer.minimize(cost, global_step=global_step)
@@ -89,10 +89,10 @@ elif FLAGS.job_name == "worker":
             batch_xs, batch_ys = mnist.train.next_batch(batch_size)
             _, c, gs = mon_sess.run([opt, cost, global_step], feed_dict={x: batch_xs, y: batch_ys})
             print('Cost:', c, 'Step:', gs, 'Worker: ',FLAGS.task_index)
-            duration = default_timer() - start_time
-            print('Time Elapsed: ' + str(duration))
-            if not mon_sess.should_stop():
+            if not mon_sess.should_stop() and gs % display_step == 0:
         	print("Accuracy after ", gs, " steps:", accuracy.eval(session=mon_sess, feed_dict={x: mnist.test.images, y: mnist.test.labels}))
+                duration = default_timer() - start_time
+                print('Time Elapsed: ' + str(duration))
     duration = default_timer() - start_time
     print("Duration: " + str(duration))
     print("End Time:" + str(datetime.datetime.now()))

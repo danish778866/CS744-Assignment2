@@ -5,6 +5,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 tf.app.flags.DEFINE_integer("task_index", 0, "Index of task with in the job.")
 tf.app.flags.DEFINE_string("job_name", "worker", "either worker or ps")
 tf.app.flags.DEFINE_string("deploy_mode", "single", "either single or cluster")
+tf.app.flags.DEFINE_integer("batch_size", 0, "Integer batch size")
 FLAGS = tf.app.flags.FLAGS
 
 tf.logging.set_verbosity(tf.logging.DEBUG)
@@ -52,7 +53,7 @@ elif FLAGS.job_name == "worker":
 
     learning_rate = 0.01
     training_epochs = 25
-    batch_size = 100
+    batch_size = FLAGS.batch_size
     display_step = 1
     # tf Graph Input
     with tf.name_scope("Input"):
@@ -94,7 +95,7 @@ elif FLAGS.job_name == "worker":
         tf.summary.tensor_summary("Input_y", y)
         
         merged_summary_op = tf.summary.merge_all()
-        summary_writer = tf.summary.FileWriter("/users/danish/summaries/train", sess.graph)
+        summary_writer = tf.summary.FileWriter("/tmp/summaries", sess.graph)
         
     
         # Training cycle
