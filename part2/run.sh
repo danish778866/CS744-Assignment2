@@ -22,23 +22,23 @@ REV=`tput smso`
 
 # Help function
 function HELP {
-  exit_status=$1
-  echo -e \\n"Help documentation for ${BOLD}${SCRIPT}.${NORM}"\\n
-  echo -e "${REV}Basic usage:${NORM} ${BOLD}$SCRIPT -m <execution_mode> -b <batch_size>${NORM}"\\n
-  echo "Command line switches are required. The following switches are recognized."
-  echo "${REV}-m${NORM}  --Sets the execution mode ${BOLD}m${NORM}. The possible values are single, cluster and cluster2"
-  echo "${REV}-b${NORM}  --Sets the batch size ${BOLD}b${NORM}. Recommended values are one of 64, 128 and 256."
-  echo -e "${REV}-h${NORM}  --Displays this help message. No further functions are performed."\\n
-  echo -e "Example: ${BOLD}$SCRIPT -m cluster -b 64${NORM}"\\n
-  exit $exit_status
+    exit_status=$1
+    echo -e \\n"Help documentation for ${BOLD}${SCRIPT}.${NORM}"\\n
+    echo -e "${REV}Basic usage:${NORM} ${BOLD}$SCRIPT -m <execution_mode> -b <batch_size>${NORM}"\\n
+    echo "Command line switches are required. The following switches are recognized."
+    echo "${REV}-m${NORM}  --Sets the execution mode ${BOLD}m${NORM}. The possible values are single, cluster and cluster2"
+    echo "${REV}-b${NORM}  --Sets the batch size ${BOLD}b${NORM}. Recommended values are one of 64, 128 or 256."
+    echo -e "${REV}-h${NORM}  --Displays this help message. No further functions are performed."\\n
+    echo -e "Example: ${BOLD}$SCRIPT -m cluster -b 64${NORM}"\\n
+    exit $exit_status
 }
 
 # Check the number of arguments. If none are passed, print help and exit.
 NUMARGS=$#
 echo -e \\n"Number of arguments: $NUMARGS"
 if [ $NUMARGS -eq 0 ]; then
-  echo "Please specify the required arguments..."
-  HELP 1
+    echo "Please specify the required arguments..."
+    HELP 1
 fi
 
 ### Start getopts code ###
@@ -49,23 +49,23 @@ fi
 #getopts. This is required to get my unrecognized option code to work.
 
 while getopts :m:b:h FLAG; do
-  case $FLAG in
-    m)
-      MODE=$OPTARG
-      echo "-m used: $OPTARG"
-      ;;
-    b)
-      BATCH_SIZE=$OPTARG
-      echo "-b used: $OPTARG"
-      ;;
-    h)  #show help
-      HELP 0
-      ;;
-    \?) #unrecognized option - show help
-      echo -e \\n"Option -${BOLD}$OPTARG${NORM} not allowed."
-      HELP 1
-      ;;
-  esac
+    case $FLAG in
+        m)
+            MODE=$OPTARG
+            echo "-m used: $OPTARG"
+            ;;
+        b)
+            BATCH_SIZE=$OPTARG
+            echo "-b used: $OPTARG"
+            ;;
+        h)  #show help
+            HELP 0
+            ;;
+        \?) #unrecognized option - show help
+            echo -e \\n"Option -${BOLD}$OPTARG${NORM} not allowed."
+            HELP 1
+            ;;
+    esac
 done
 
 shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
@@ -75,11 +75,11 @@ shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 function validate_arguments {
     if [ -z "${MODE}" ]
     then
-        echo "Please specicy a valid execution mode..."
+        echo "Please specify a valid execution mode..."
         HELP 1
     elif [ "${MODE}" != "single" ] && [ "${MODE}" != "cluster" ] && [ "${MODE}" != "cluster2" ]
     then
-        echo "Please specicy a valid execution mode..."
+        echo "Please specify a valid execution mode..."
         HELP 1
     fi
     
