@@ -1,0 +1,10 @@
+nohup: ignoring input
+2019-04-18 16:50:30.927914: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2019-04-18 16:50:30.956448: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2194850000 Hz
+2019-04-18 16:50:30.959718: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x34bdf00 executing computations on platform Host. Devices:
+2019-04-18 16:50:30.959755: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-18 16:50:30.962690: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222}
+2019-04-18 16:50:30.967218: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+2019-04-18 16:51:12.798023: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 727d7ea48d501e32 with config: allow_soft_placement: true
+2019-04-18 17:01:37.097069: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 3e688f815a371c9e with config: allow_soft_placement: true
+2019-04-18 17:10:22.355312: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session e6948080ed648708 with config: allow_soft_placement: true
