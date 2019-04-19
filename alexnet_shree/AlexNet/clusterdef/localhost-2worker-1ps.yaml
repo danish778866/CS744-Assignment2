@@ -1,0 +1,12 @@
+session_name: tfcluster
+start_directory: /home/cc/projects/tfhybrid/hybridalex/
+windows:
+  - window_name: ps0
+    panes:
+      - shell_command: env CUDA_VISIBLE_DEVICES= python scripts/tfserver.py clusterdef/localhost-2worker-1ps.proto ps 0
+  - window_name: worker0
+    panes:
+      - shell_command: env CUDA_VISIBLE_DEVICES=0 python scripts/tfserver.py clusterdef/localhost-2worker-1ps.proto worker 0
+  - window_name: worker1
+    panes:
+      - shell_command: env CUDA_VISIBLE_DEVICES=1 python scripts/tfserver.py clusterdef/localhost-2worker-1ps.proto worker 1

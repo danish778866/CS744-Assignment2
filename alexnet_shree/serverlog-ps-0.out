@@ -1,0 +1,9 @@
+nohup: ignoring input
+2019-04-18 16:33:11.021647: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2019-04-18 16:33:11.041511: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2194850000 Hz
+2019-04-18 16:33:11.043375: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x3ae17f0 executing computations on platform Host. Devices:
+2019-04-18 16:33:11.043397: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-18 16:33:11.045104: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> localhost:2223}
+2019-04-18 16:33:11.045118: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> node0:2222, 1 -> node1:2222, 2 -> node2:2222}
+2019-04-18 16:33:11.047856: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2223
+bash: line 1: 21205 Killed                  python startserver.py --deploy_mode=cluster2 --job_name=ps
