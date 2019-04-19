@@ -16,8 +16,8 @@
 1. Training logs will get generated in the logs directory.
 2. [sar](https://en.wikipedia.org/wiki/Sar_(Unix)) can be used for analyzing
    system metrics.
-       * Memory  : `sar -r`
-       * CPU     : `sar -u`
-       * Network : `sar -n DEV`
+  * Memory  : `sar -r`
+  * CPU     : `sar -u`
+  * Network : `sar -n DEV`
 
 **Note:** Keep an eye on the logs generated in logs directory for any errors.
