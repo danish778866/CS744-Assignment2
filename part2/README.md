@@ -1,0 +1,30 @@
+# Part 2
+
+## Running
+```
+> cd part2
+> ./run.sh -h # Get help text
+```
+
+## Examples
+```
+> ./run.sh -m single -b 64
+> ./run.sh -m single -b 128
+> ./run.sh -m single -b 256
+> ./run.sh -m cluster -b 64
+> ./run.sh -m cluster -b 128
+> ./run.sh -m cluster -b 256
+> ./run.sh -m cluster2 -b 64
+> ./run.sh -m cluster2 -b 128
+> ./run.sh -m cluster2 -b 256
+```
+
+## Performance analysis
+1. Training logs will get generated in the logs directory.
+2. [sar](https://en.wikipedia.org/wiki/Sar_(Unix)) can be used for analyzing
+   system metrics.
+    * Memory  : `sar -r`
+    * CPU     : `sar -u`
+    * Network : `sar -n DEV`
+
+**Note:** Keep an eye on the logs generated in logs directory for any errors.
