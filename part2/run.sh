@@ -94,7 +94,7 @@ function execute_training {
     echo "Including functions from ${UTILS_SCRIPT}..."
     source ${UTILS_SCRIPT}
     echo "Starting cluster in ${MODE} mode..."
-    "${START_SERVER_FUNC}" "${START_SERVER_SCRIPT}" "${MODE}"
+    "${START_SERVER_FUNC}" "${START_SERVER_SCRIPT}" "${MODE}" &
     echo "Waiting for bootstrap of server processes..."
     sleep 5
     echo "Executing AlexNet training in ${MODE} with batch size of ${BATCH_SIZE}..."
